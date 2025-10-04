@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ACELERA FIT - Apenas 47 unidades restantes! Oferta expira em minutos">
+    <title>⚡ ACELERA FIT - Estoque Limitado - Últimas Unidades!</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #000;
+        }
+
+        /* Urgency Bar */
+        .urgency-bar {
+            background: linear-gradient(90deg, #ff0000 0%, #ff4444 100%);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero with Urgency */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 100px 0 80px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .urgency-badge {
+            background: #ff0000;
+            color: white;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            color: #ff0000;
+            text-shadow: 0 0 20px rgba(255,0,0,0.5);
+        }
+
+        .countdown-timer {
+            background: rgba(255,0,0,0.2);
+            border: 3px solid #ff0000;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .timer-box {
+            background: #ff0000;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+        }
+
+        .timer-number {
+            font-size: 48px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .timer-label {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .stock-counter {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #000;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 500px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+        }
+
+        .stock-bar {
+            background: #333;
+            height: 30px;
+            border-radius: 15px;
+            margin-top: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stock-bar-fill {
+            background: linear-gradient(90deg, #ff0000 0%, #ff6b6b 100%);
+            height: 100%;
+            width: 23%;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .product-showcase {
+            margin: 40px 0;
+        }
+
+        .product-image {
+            display: inline-block;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .product-image img {
+            max-width: 400px;
+            width: 100%;
+            filter: drop-shadow(0 20px 40px rgba(255,0,0,0.3));
+        }
+
+        .sold-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: #ff0000;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 14px;
+            transform: rotate(15deg);
+            box-shadow: 0 5px 15px rgba(255,0,0,0.5);
+        }
+
+        .price-section {
+            background: rgba(255,0,0,0.1);
+            border: 2px solid #ff0000;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+
+        .price-slash {
+            font-size: 32px;
+            text-decoration: line-through;
+            color: #999;
+            display: block;
+        }
+
+        .price-now {
+            font-size: 72px;
+            color: #ffd700;
+            font-weight: bold;
+            display: block;
+            margin: 20px 0;
+            text-shadow: 0 0 30px rgba(255,215,0,0.5);
+        }
+
+        .savings {
+            background: #ffd700;
+            color: #000;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            padding: 25px 60px;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 30px 0;
+            box-shadow: 0 15px 40px rgba(255,0,0,0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-button 2s infinite;
+        }
+
+        @keyframes pulse-button {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 50px rgba(255,0,0,0.6);
+        }
+
+        .social-proof {
+            background: #1a1a1a;
+            padding: 60px 0;
+        }
+
+        .live-counter {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: #ff0000;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .recent-buyers {
+            background: #000;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .buyer-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .buyer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff0000 0%, #ffd700 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .guarantee-section {
+            background: #ffd700;
+            color: #000;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .guarantee-seal {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #ff0000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+        }
+
+        .scarcity-message {
+            background: linear-gradient(135deg, #ff0000 0%, #990000 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 40px 0;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .timer-display {
+                gap: 15px;
+            }
+            .timer-box {
+                min-width: 70px;
+                padding: 15px 10px;
+            }
+            .timer-number {
+                font-size: 32px;
+            }
+            .price-now {
+                font-size: 48px;
+            }
+            .cta-button {
+                padding: 20px 40px;
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Urgency Bar -->
+    <div class="urgency-bar" id="urgency-bar">
+        ⚠️ ATENÇÃO: Apenas 47 unidades restantes! Oferta expira em <span id="top-timer">9:58</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="urgency-badge">
+                🔥 ÚLTIMAS UNIDADES - ESTOQUE CRÍTICO!
+            </div>
+
+            <h1>⚡ ACELERA FIT</h1>
+            <p style="font-size: 24px; margin-bottom: 30px;">
+                Transformação Corporal em 90 Dias<br>
+                <strong style="color: #ff0000;">CORRA! Esta Oferta Expira Hoje!</strong>
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-timer">
+                <h3 style="font-size: 28px; margin-bottom: 10px;">⏰ OFERTA EXPIRA EM:</h3>
+                <div class="timer-display">
+                    <div class="timer-box">
+                        <span class="timer-number" id="minutes">09</span>
+                        <span class="timer-label">Minutos</span>
+                    </div>
+                    <div class="timer-box">
+                        <span class="timer-number" id="seconds">58</span>
+                        <span class="timer-label">Segundos</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-size: 16px;">
+                    Após este tempo, o preço volta para R$ 197!
+                </p>
+            </div>
+
+            <!-- Stock Counter -->
+            <div class="stock-counter">
+                <div>🚨 ALERTA DE ESTOQUE BAIXO 🚨</div>
+                <div style="font-size: 32px; color: #ff0000; margin: 15px 0;">
+                    <span id="stock-count">47</span> UNIDADES RESTANTES
+                </div>
+                <div class="stock-bar">
+                    <div class="stock-bar-fill" id="stock-bar">
+                        23% em estoque
+                    </div>
+                </div>
+                <p style="margin-top: 15px; font-size: 14px;">
+                    Estoque inicial: 200 unidades
+                </p>
+            </div>
+
+            <!-- Product Image -->
+            <div class="product-showcase">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/400x500/000000/ff0000?text=ACELERA+FIT+URGENTE" alt="ACELERA FIT - Últimas Unidades">
+                    <div class="sold-badge">
+                        153<br>VENDIDOS<br>HOJE!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Section -->
+            <div class="price-section">
+                <span class="price-slash">De R$ 197</span>
+                <span class="price-now">R$ 97</span>
+                <div class="savings">ECONOMIZE R$ 100</div>
+                <p style="margin-top: 20px; font-size: 18px;">
+                    💳 ou 3x de R$ 32,33 sem juros
+                </p>
+            </div>
+
+            <a href="#checkout" class="cta-button">
+                🔥 GARANTIR MINHA UNIDADE AGORA
+            </a>
+
+            <p style="margin-top: 20px; font-size: 16px; color: #ffd700;">
+                ⚡ 327 pessoas estão vendo esta oferta agora!
+            </p>
+        </div>
+    </section>
+
+    <!-- Live Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="live-counter">
+                <h2 style="font-size: 36px; margin-bottom: 20px;">
+                    <span class="live-dot"></span>
+                    VENDAS AO VIVO
+                </h2>
+                <p style="font-size: 20px; color: #ffd700;">
+                    Veja quem acabou de comprar:
+                </p>
+            </div>
+
+            <div class="recent-buyers" id="recent-buyers">
+                <div class="buyer-item">
+                    <div class="buyer-avatar">MC</div>
+                    <div style="flex: 1;">
+                        <strong>Maria C.</strong> de São Paulo, SP<br>
+                        <small style="color: #ffd700;">Comprou o Kit Transformação há 2 minutos</small>
+                    </div>
+                    <div style="color: #00ff00; font-weight: bold;">✓ Confirmado</div>
+                </div>
+
+                <div class="buyer-item">
+                    <div class="buyer-avatar">JF</div>
+                    <div style="flex: 1;">
+                        <strong>Juliana F.</strong> de Rio de Janeiro, RJ<br>
+                        <small style="color: #ffd700;">Comprou 3 potes há 5 minutos</small>
+                    </div>
+                    <div style="color: #00ff00; font-weight: bold;">✓ Confirmado</div>
+                </div>
+
+                <div class="buyer-item">
+                    <div class="buyer-avatar">AS</div>
+                    <div style="flex: 1;">
+                        <strong>Ana S.</strong> de Belo Horizonte, MG<br>
+                        <small style="color: #ffd700;">Comprou 1 pote há 8 minutos</small>
+                    </div>
+                    <div style="color: #00ff00; font-weight: bold;">✓ Confirmado</div>
+                </div>
+
+                <div class="buyer-item">
+                    <div class="buyer-avatar">PR</div>
+                    <div style="flex: 1;">
+                        <strong>Paula R.</strong> de Curitiba, PR<br>
+                        <small style="color: #ffd700;">Comprou o Kit Completo há 12 minutos</small>
+                    </div>
+                    <div style="color: #00ff00; font-weight: bold;">✓ Confirmado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scarcity Message -->
+    <section class="scarcity-message">
+        <div class="container">
+            ⚠️ ATENÇÃO: Após o esgotamento, o próximo lote só chega em 30 dias e custará R$ 197!<br>
+            <strong style="font-size: 32px; display: block; margin-top: 15px;">
+                GARANTA SUA UNIDADE AGORA!
+            </strong>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-seal">
+                30 DIAS<br>GARANTIA
+            </div>
+            <h2 style="font-size: 36px; margin-bottom: 20px;">
+                GARANTIA TOTAL DE 30 DIAS
+            </h2>
+            <p style="font-size: 20px; max-width: 800px; margin: 0 auto;">
+                Experimente sem riscos! Se não ficar 100% satisfeita, devolvemos TODO seu dinheiro.<br>
+                <strong>Sem perguntas, sem burocracia!</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section style="background: #000; color: white; padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 48px; color: #ff0000; margin-bottom: 20px;">
+                ⚡ ÚLTIMA CHANCE!
+            </h2>
+            <p style="font-size: 24px; margin-bottom: 30px;">
+                Apenas <span style="color: #ffd700; font-weight: bold;" id="stock-count-2">47</span> unidades restantes
+            </p>
+            
+            <div style="background: rgba(255,0,0,0.2); padding: 30px; border-radius: 20px; max-width: 600px; margin: 0 auto 40px; border: 2px solid #ff0000;">
+                <div style="font-size: 32px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">
+                    R$ 97
+                </div>
+                <div style="font-size: 18px;">
+                    ou 3x de R$ 32,33 sem juros
+                </div>
+            </div>
+
+            <a href="#checkout-final" class="cta-button">
+                🔥 SIM! QUERO GARANTIR AGORA
+            </a>
+
+            <p style="margin-top: 30px; font-size: 16px; color: #999;">
+                🔒 Compra 100% Segura | 📦 Entrega Expressa para Todo Brasil
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 18px; margin-bottom: 15px;">
+                <strong>💪 ACELERA FIT + PAULA AQUILAM</strong>
+            </p>
+            <p style="font-size: 14px; color: #999;">
+                © 2025 ACELERA FIT. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Timer de 10 minutos
+        let timeLeft = 10 * 60;
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            document.getElementById('top-timer').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                document.querySelectorAll('.cta-button').forEach(btn => {
+                    btn.textContent = '⚠️ OFERTA EXPIRADA';
+                    btn.style.background = '#666';
+                    btn.style.cursor = 'not-allowed';
+                });
+            }
+        }
+        
+        updateTimer();
+
+        // Simulador de estoque decrescente
+        let stock = 47;
+        setInterval(() => {
+            if (stock > 20 && Math.random() > 0.7) {
+                stock--;
+                document.getElementById('stock-count').textContent = stock;
+                document.getElementById('stock-count-2').textContent = stock;
+                
+                const percentage = (stock / 200 * 100).toFixed(0);
+                document.getElementById('stock-bar').style.width = percentage + '%';
+                document.getElementById('stock-bar').textContent = percentage + '% em estoque';
+            }
+        }, 15000);
+
+        // Simulador de compras ao vivo
+        const names = [
+            {name: 'Carla M.', city: 'Porto Alegre, RS'},
+            {name: 'Fernanda L.', city: 'Salvador, BA'},
+            {name: 'Beatriz S.', city: 'Fortaleza, CE'},
+            {name: 'Camila R.', city: 'Brasília, DF'},
+            {name: 'Larissa T.', city: 'Recife, PE'}
+        ];
+
+        function addNewBuyer() {
+            const buyer = names[Math.floor(Math.random() * names.length)];
+            const products = ['1 pote', '3 potes', 'Kit Completo', 'Kit Transformação'];
+            const product = products[Math.floor(Math.random() * products.length)];
+            
+            const buyerHTML = `
+                <div class="buyer-item">
+                    <div class="buyer-avatar">${buyer.name.substring(0, 2)}</div>
+                    <div style="flex: 1;">
+                        <strong>${buyer.name}</strong> de ${buyer.city}<br>
+                        <small style="color: #ffd700;">Comprou ${product} há instantes</small>
+                    </div>
+                    <div style="color: #00ff00; font-weight: bold;">✓ Confirmado</div>
+                </div>
+            `;
+            
+            const container = document.getElementById('recent-buyers');
+            container.insertAdjacentHTML('afterbegin', buyerHTML);
+            
+            // Remove o último item se houver mais de 5
+            const items = container.querySelectorAll('.buyer-item');
+            if (items.length > 5) {
+                items[items.length - 1].remove();
+            }
+        }
+
+        setInterval(addNewBuyer, 20000);
+    </script>
+</body>
+</html>
